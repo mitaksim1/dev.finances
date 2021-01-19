@@ -1,0 +1,91 @@
+/* Global =============================*/
+/* :root referencia a tag html */
+:root {
+    /* Estou criando uma variavel global */
+    --dark-blue: #363f5f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f0f2f5;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    /* min() espera dois argumentos, ele compara os dois valore e pega sempre o menor baseado no tamanho da tela. Enquanto a tela estiver menor que 800px ele vai pegar 90vw do espaço da tela, à partir de 800px ele para em 800px da tela */
+    width: min(90vw, 800px);
+    margin: auto;
+}
+
+/* Titles ============================= */
+/* Seletor h2 pega todos os h2, o balance h2 vai pegar so o h2 que esta dentro do balance cf. mudanças mais abaixo */
+h2 {
+    margin-top: 3.2rem;
+    margin-bottom: .8rem;
+    /* Passo a variavel que eu criei para a propriedade color no lugar da cor escrita em bruto */
+    color: var(--dark-blue);
+    font-weight: normal;
+}
+
+
+/* Header ============================= */
+header {
+    background: #2D4A22;
+    padding: 2rem 0 10rem;
+    text-align: center;
+}
+
+#logo {
+    color: #fff;
+    font-weight: 100;
+}
+
+/* Balance ============================ */
+#balance {
+    margin-top: -8rem;
+}
+
+#balance h2 {
+    color: white;
+    margin-top: 0;
+}
+
+/* Cards ============================= */
+.card {
+    background: white;
+    /* Em cima e embaixo / Laterais */
+    padding: 1.5rem 2rem;
+    border-radius: 0.25rem;
+    margin-bottom: 2rem;
+    color: var(--dark-blue);
+}
+
+.card h3 {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.card p {
+    font-size: 2rem;
+    line-height: 3rem;
+    margin-top: 1rem;
+}
+
+/* .card.total : estou procurando na classe .card uma outra classe que se chama total */
+.card.total {
+    background: #49AA26;
+    color: white;
+}
+
+/* Footer ============================= */
+footer {
+    text-align: center;
+}
+
+
+
