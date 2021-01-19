@@ -82,9 +82,62 @@ header {
     color: white;
 }
 
+/* Table ============================= */
+
+#data-table {
+    /* Pega toda a largura do container */
+    width: 100%;
+    /* Tira todas as bordas da tabela no eixo vertical e horizontal */
+    /* Neste caso passamos 0 pro eixo vertical porque queremos uma borda completa (sem espaço entre elas na vertical) e 0.5rem no eixo horizontal, porque queremos deixar um espaço entre cada borda */
+    border-spacing: 0 0.5rem;
+    color: #969cb3;
+}
+
+table thead tr th:first-child,
+table tbody tr td:first-child {
+    /* Lateral em cima = 0.5, lateral direita em cima e embaixo = 0 e lateral esquerda embaixo = 0.5 */
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
+table thead th {
+    background: white;
+    font-weight: normal;
+    padding: 1rem 2rem;
+    text-align: left;
+}
+
+/* opacity: quando passamos o mouse, muda de 0.7 pra 1 quando colocamos um :hover no elemento escolhido, neste caso elemento tr. */
+table tbody tr {
+    opacity: .7;
+}
+
+table tbody tr:hover {
+    opacity: 1;
+}
+
+table tbody td{
+    background: white;
+    padding: 1rem 2rem;
+}
+
+td.description {
+    color: var(--dark-blue);
+}
+
+td.income {
+    color: #12a454;
+}
+
+td.expense {
+    color: #e92929;
+}
+
 /* Footer ============================= */
 footer {
     text-align: center;
+    padding: 4rem 0 2rem;
+    color: var(dark-blue);
+    opacity: 0.6;
 }
 
 
