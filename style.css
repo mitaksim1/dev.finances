@@ -16,6 +16,19 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+/* Esconder os titulos : Balanço e Transaçoes */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 .container {
     /* min() espera dois argumentos, ele compara os dois valore e pega sempre o menor baseado no tamanho da tela. Enquanto a tela estiver menor que 800px ele vai pegar 90vw do espaço da tela, à partir de 800px ele para em 800px da tela */
     width: min(90vw, 800px);
@@ -30,6 +43,23 @@ h2 {
     /* Passo a variavel que eu criei para a propriedade color no lugar da cor escrita em bruto */
     color: var(--dark-blue);
     font-weight: normal;
+}
+
+/* Links & Buttons ============================= */
+
+a {
+    color: #49AA26;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #3dd705;
+}
+
+.button.new {
+    /* Como o a é um elemento inline, o margin-bottom nao vai funcionar. Se colocarmos um display: block vai funcionar, mas o a vai pegar toda a largura da pagina. Como nao queremos isso, vamos usar o inline-block que vai guardar as dimensoes inline do a, mas vai pegar as propriedades do block permitindo assim o uso do margin*/
+    margin-bottom: .8rem;
+    display: inline-block;
 }
 
 
@@ -68,6 +98,9 @@ header {
 .card h3 {
     font-weight: normal;
     font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .card p {
