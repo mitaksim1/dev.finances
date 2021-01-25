@@ -123,6 +123,11 @@ header {
 
 /* Table ============================= */
 
+#transaction {
+    display: block;
+    overflow-x: auto;
+}
+
 #data-table {
     /* Pega toda a largura do container */
     width: 100%;
