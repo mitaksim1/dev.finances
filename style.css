@@ -3,6 +3,9 @@
 :root {
     /* Estou criando uma variavel global */
     --dark-blue: #363f5f;
+    --green: #49AA26;
+    --light-green: #3dd705;
+    --red: #e92929; 
 }
 
 * {
@@ -42,6 +45,7 @@ body {
 }
 
 /* Titles ============================= */
+
 /* Seletor h2 pega todos os h2, o balance h2 vai pegar so o h2 que esta dentro do balance cf. mudanças mais abaixo */
 h2 {
     margin-top: 3.2rem;
@@ -54,18 +58,51 @@ h2 {
 /* Links & Buttons ============================= */
 
 a {
-    color: #49AA26;
+    color: var(--green);
     text-decoration: none;
 }
 
 a:hover {
-    color: #3dd705;
+    color: var(--light-green);
+}
+
+button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    color: white;
+    background: var(--green);
+    padding: 0;
+    border-radius: 0.25rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--light-green);
 }
 
 .button.new {
     /* Como o a é um elemento inline, o margin-bottom nao vai funcionar. Se colocarmos um display: block vai funcionar, mas o a vai pegar toda a largura da pagina. Como nao queremos isso, vamos usar o inline-block que vai guardar as dimensoes inline do a, mas vai pegar as propriedades do block permitindo assim o uso do margin*/
     margin-bottom: .8rem;
     display: inline-block;
+}
+
+.button.cancel {
+    color: var(--red);
+    border: 2px var(--red) solid;
+    border-radius: 0.25rem;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0.6;
+}
+
+/* Gerando a opacidade */ 
+.button.cancel:hover {
+    opacity: 1;
 }
 
 
@@ -117,7 +154,7 @@ header {
 
 /* .card.total : estou procurando na classe .card uma outra classe que se chama total */
 .card.total {
-    background: #49AA26;
+    background: var(--green);
     color: white;
 }
 
@@ -180,7 +217,7 @@ td.income {
 }
 
 td.expense {
-    color: #e92929;
+    color: var(--red);
 }
 
 /* Footer ============================= */
@@ -214,6 +251,44 @@ td.expense {
     padding: 2.4rem;
     position: relative;
 }
+
+/* Form ============================= */
+#form {
+    max-width: 500px;
+}
+
+#form h2 {
+    margin-top: 0;
+}
+
+input {
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.8rem;
+    width: 100%;
+}
+
+.input-group {
+    margin-top: 0.8rem;
+}
+
+.input-group small {
+    opacity: 0.4;
+}
+
+/* Form buttons */
+.input-group.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button {
+    width: 48%;
+}
+
+
 
 /* Footer ============================= */
 footer {
