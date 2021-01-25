@@ -11,6 +11,12 @@
     box-sizing: border-box;
 }
 
+/* 100% = 16px, como queremos 15px = 93.75% */
+/* Esse vai ser o tamanho normal para mobile cf. Responsive mais abaixo pra versao desktop */
+html {
+    font-size: 93.75%; /* 15px */
+}
+
 body {
     background: #f0f2f5;
     font-family: 'Poppins', sans-serif;
@@ -179,6 +185,25 @@ footer {
     color: var(dark-blue);
     opacity: 0.6;
 }
+
+/* Responsive ============================= */
+/* Quando a largura da tela for de 800 pra cima, aplicar o que estiver selecionado */
+@media (min-width: 800px) {
+    html {
+        font-size: 87.5%; /* 14px */
+    }
+
+    #balance {
+        /* display: grid consegue trabalhar os elementos na horizontal e na vertical */
+        display: grid;
+        /* Para que funcione, settar os templates */
+        /* Ele vai dividir a caixa em partes iguais e pegar uma fraçao desta caixa pra colocar cada card, se quiser ver a diferença colocar 2fr pro primeiro card */
+        grid-template-columns: 1fr 1fr 1fr;
+        /* Espaço entre as colunas */
+        gap: 2rem;
+    }
+}
+
 
 
 
