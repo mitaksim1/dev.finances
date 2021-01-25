@@ -50,8 +50,13 @@
 
       <section id="transaction">
         <h2 class="sr-only">Transações</h2>
+
         <!-- Botao -->
-        <a href="#" class="button new">+ Nova transação</a>
+        <a href="#" 
+        onclick="Modal.open()"
+        class="button new">+ Nova transação
+      </a>
+
         <table id="data-table">
           <thead>
             <tr>
@@ -92,7 +97,7 @@
     </main>
     <!-- Modal -->
     <!-- Quando o modal tiver a classe active, ele vai aparecer, senao nao-->
-    <div class="modal-overlay active">
+    <div class="modal-overlay">
       <div class="modal">
           <div id="form">
             <h2>Nova transação</h2>
@@ -148,5 +153,21 @@
     <footer>
       <p>dev.finance$</p>
     </footer>
+    <!-- Todos os objetos possuem propriedades e funcionalidades -->
+    <script> 
+      const Modal = {
+        open(){
+          // Abrir modal
+          // Adicionar a class active ao modal
+          document
+            .querySelector('.modal-overlay')
+            .classList.add('active')
+        },
+        close() {
+          // Fechar Modal
+          // Remover a class activ do modal
+        }
+      }
+    </script>
   </body>
 </html>
