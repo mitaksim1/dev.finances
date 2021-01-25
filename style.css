@@ -237,6 +237,7 @@ td.expense {
     /* A junçao do opacity 0 + visibility: hidden vai tirar a opacidade da tela e escondê-la */
     opacity: 0;
     visibility: hidden;
+    z-index: 999;
 }
 
 /* Classe active */
@@ -250,6 +251,7 @@ td.expense {
     /* Nao precisamos definir a largura, porque quando colocarmos algum conteudo dentro desta caixa, o padding vai alargar automaticamente. */
     padding: 2.4rem;
     position: relative;
+    z-index: 1;
 }
 
 /* Form ============================= */
