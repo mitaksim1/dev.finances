@@ -94,7 +94,55 @@
     <!-- Quando o modal tiver a classe active, ele vai aparecer, senao nao-->
     <div class="modal-overlay active">
       <div class="modal">
-          Oi
+          <div id="form">
+            <h2>Nova transação</h2>
+            <form action="">
+              <div class="input-group">
+                <!-- A classe "sr-only" vai servir so pros screen-readers-->
+                <label 
+                  class="sr-only" 
+                  for="description">Descrição
+                </label>
+                <input 
+                  type="text" 
+                  id="description" 
+                  name="description"
+                  placeholder="Descrição"
+                />
+                <div class="input-group">
+                  <!-- A classe "sr-only" vai servir so pros screen-readers-->
+                  <!-- step: défini o salto de um valor à outro, aqui à cada 0.01 -->
+                  <label 
+                    class="sr-only" 
+                    for="amount">Valor
+                  </label>
+                  <input 
+                    type="number" 
+                    step="0.01"
+                    id="amount" 
+                    name="amount"
+                    placeholder="Valor"
+                  />
+                  <!-- Aviso embaixo do input -->
+                  <small class="help"> Use o sinal - (negativo) para despesas e , (virgula) para casas decimais</small>
+              </div>
+              <div class="input-group">
+                <!-- A classe "sr-only" vai servir so pros screen-readers-->
+                <label 
+                  class="sr-only" 
+                  for="date">Data</label>
+                <input 
+                  type="date" 
+                  id="date" 
+                  name="date"
+                  placeholder="Data"
+                />
+                <div class="input-group actions">
+                  <a href="#" class="button-cancel">Cancelar</a>
+                  <button>Salvar</button>
+                </div>
+            </form>
+          </div>
       </div>
     </div>
     <footer>
