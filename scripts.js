@@ -61,6 +61,8 @@ const Transaction = {
 // 1. Eu preciso pegar as transações do objeto aqui no Javascript. Uma outra forma de escrever esse passo :
   // Substituir os dados do HTML com os dados do JS
   const DOM = {
+    // 3.8 Getting tbody tag 
+    transactionsContainer: document.querySelector('#data-table tbody'),
 
     // 3. Essa função vai trabalhar com a função innerHTMLTransaction(). Ela vai pegar as transações e coloca-las no HTML
     addTransaction(transaction, index) {
@@ -69,7 +71,9 @@ const Transaction = {
       // 3.2 Adicionar a essa tag o conteudo da variavel html, para isso precisamos retornar esta constante cf. 3.3
       tr.innerHTML = DOM.innerHTMLTransaction(transaction);
       // 3.4 Agora precisar chamar este método cf. 3.5
-      console.log(tr.innerHTML);
+      
+      // 3.9 Agora que recuperamos a tag tbody, podemos "colar" o que criamos dentro dela
+      DOM.transactionsContainer.appendChild(tr);
     },
 
     // 2. Essa função vai me permitir substituir os dados do HTML
