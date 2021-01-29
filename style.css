@@ -220,7 +220,7 @@ td.expense {
     color: var(--red);
 }
 
-/* Footer ============================= */
+/* Modal ============================= */
 .modal-overlay {
     width: 100%;
     height: 100%;
@@ -228,8 +228,10 @@ td.expense {
 
     /* Essa configuraçao vai colocar a opacidade na tela inteira */
     position: fixed;
+    /* Quando mudamos a posiçao de static (default) para uma outra posiçao "descolamos" o elemento da tela e podemos mexer nele como quisermos. Aqui top vai levar a div para o alto e vai pegar toda a pagina */
     top: 0;
 
+    /* Posiciona a caixinha .modal */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -241,11 +243,13 @@ td.expense {
 }
 
 /* Classe active */
+/* .modal-overlay é como se fosse o html, a classe .modal abaixo é como se fosse o body desta deste "html"*/
 .modal-overlay.active {
     opacity: 1;
     visibility: visible;
 }
 
+/* .modal é a caixa que vai conter os elementos */
 .modal {
     background: #F0F2f5;
     /* Nao precisamos definir a largura, porque quando colocarmos algum conteudo dentro desta caixa, o padding vai alargar automaticamente. */
