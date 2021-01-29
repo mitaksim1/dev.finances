@@ -36,6 +36,12 @@ const transactions = [
       amount: -20000, 
       date: '23/01/2021',
     },
+    {
+      id: 4,
+      description: 'App',
+      amount: 200000, 
+      date: '23/01/2021',
+    },
 ];
 
 // Esse sinal de = nao devemos falar igual, mas sim atribuindo para evitar confusoes com o sinal de = matematico que significa igualdade
@@ -83,7 +89,7 @@ const Transaction = {
         // Lembrete: `` (template literals) nos permete usar variaveis dentro (interpolação) e nesse caso podemos usar um bloco de codigo html sem ter erros, que seria o caso com "" e ''
       const html = `
           <td class="description">${transaction.description}</td>
-          <td class="expense">- ${transaction.amount}</td>
+          <td class="expense">${transaction.amount}</td>
           <td class="date">${transaction.date}</td>
           <td>
             <img src="./assets/minus.svg" alt="Remover transação">
@@ -94,8 +100,7 @@ const Transaction = {
     }
 }
 
-// 3.5 Chamando o método addTransaction() para que funcione
-DOM.addTransaction(transactions[2]);
-// 3.6 Agora que passamos o argumento que queremos recuperar, passamos o paramêtro transaction para a função innerHTMLtransaction(), assim teremos acesso à ela dentro da funçao cf. 3.7
-
-// 2. e colocar la no HTML 
+// 4. Para mostrar todos os dados do vetor, fazemos um loop e passamos como argumento à chamada da funçao
+transactions.forEach(function(transaction) {
+    DOM.addTransaction(transaction);
+})
