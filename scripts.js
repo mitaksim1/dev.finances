@@ -84,12 +84,15 @@ const Transaction = {
 
     // 2. Essa função vai me permitir substituir os dados do HTML
     innerHTMLTransaction(transaction) {
+        // 5. Gerando as cores das transaçoes se é positiva ou negativa
+        const CSSclass = transaction.amount > 0 ? "income" : "expense";
+
         // 3.7 Podemos recuperar os dados do vetor transactions e substituir os valores no html
 
         // Lembrete: `` (template literals) nos permete usar variaveis dentro (interpolação) e nesse caso podemos usar um bloco de codigo html sem ter erros, que seria o caso com "" e ''
       const html = `
           <td class="description">${transaction.description}</td>
-          <td class="expense">${transaction.amount}</td>
+          <td class="${CSSclass}">${transaction.amount}</td>
           <td class="date">${transaction.date}</td>
           <td>
             <img src="./assets/minus.svg" alt="Remover transação">
