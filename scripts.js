@@ -61,20 +61,34 @@ const Transaction = {
 // 1. Eu preciso pegar as transações do objeto aqui no Javascript. Uma outra forma de escrever esse passo :
   // Substituir os dados do HTML com os dados do JS
   const DOM = {
+
+    // 3. Essa função vai trabalhar com a função innerHTMLTransaction(). Ela vai pegar as transações e coloca-las no HTML
+    addTransaction(transaction, index) {
+        console.log(transaction)
+      // 3.1 Vamos criar a tag tr, assim podemos apagar o tr da variavel html abaixo
+      const tr = document.createElement('tr');
+      // 3.2 Adicionar a essa tag o conteudo da variavel html, para isso precisamos retornar esta constante cf. 3.3
+      tr.innerHTML = DOM.innerHTMLTransaction();
+      // 3.4 Agora precisar chamar este método cf. 3.5
+    },
+
     // 2. Essa função vai me permitir substituir os dados do HTML
     innerHTMLTransaction() {
         // Lembrete: `` (template literals) nos permete usar variaveis dentro (interpolação) e nesse caso podemos usar um bloco de codigo html sem ter erros, que seria o caso com "" e ''
       const html = `
-        <tr>
           <td class="description">Luz</td>
           <td class="expense">- R$ 500,00</td>
           <td class="date">23/01/2021</td>
           <td>
             <img src="./assets/minus.svg" alt="Remover transação">
           </td>
-        </tr>
       `
+      // 3.3 Retornar html para poder recupera-la na funcão addTransaction
+      return html;
     }
 }
+
+// 3.5 Chamando o método addTransaction() para que funcione
+DOM.addTransaction(transactions[1]);
 
 // 2. e colocar la no HTML 
