@@ -16,4 +16,22 @@ const Modal = {
     }
   }
 
-  
+// Esse sinal de = nao devemos falar igual, mas sim atribuindo para evitar confusoes com o sinal de = matematico que significa igualdade
+const Transaction = {
+    // Quais funcionalidades eu quero pra este objeto?
+
+    // 1. Somar as entradas
+    incomes() {
+
+    },
+
+    // 2. Somar as saidas
+    expenses() {
+
+    },
+
+    // Total = entradas - saidas 
+    tota() {
+
+    }
+  }
