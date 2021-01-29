@@ -28,7 +28,7 @@ const transactions = [
       id: 2,
       description: 'Website',
       amount: 500000, 
-      date: '23/01/2021',
+      date: '24/01/2021',
     },
     {
       id: 3,
@@ -64,21 +64,23 @@ const Transaction = {
 
     // 3. Essa função vai trabalhar com a função innerHTMLTransaction(). Ela vai pegar as transações e coloca-las no HTML
     addTransaction(transaction, index) {
-        console.log(transaction)
       // 3.1 Vamos criar a tag tr, assim podemos apagar o tr da variavel html abaixo
       const tr = document.createElement('tr');
       // 3.2 Adicionar a essa tag o conteudo da variavel html, para isso precisamos retornar esta constante cf. 3.3
-      tr.innerHTML = DOM.innerHTMLTransaction();
+      tr.innerHTML = DOM.innerHTMLTransaction(transaction);
       // 3.4 Agora precisar chamar este método cf. 3.5
+      console.log(tr.innerHTML);
     },
 
     // 2. Essa função vai me permitir substituir os dados do HTML
-    innerHTMLTransaction() {
+    innerHTMLTransaction(transaction) {
+        // 3.7 Podemos recuperar os dados do vetor transactions e substituir os valores no html
+
         // Lembrete: `` (template literals) nos permete usar variaveis dentro (interpolação) e nesse caso podemos usar um bloco de codigo html sem ter erros, que seria o caso com "" e ''
       const html = `
-          <td class="description">Luz</td>
-          <td class="expense">- R$ 500,00</td>
-          <td class="date">23/01/2021</td>
+          <td class="description">${transaction.description}</td>
+          <td class="expense">- ${transaction.amount}</td>
+          <td class="date">${transaction.date}</td>
           <td>
             <img src="./assets/minus.svg" alt="Remover transação">
           </td>
@@ -89,6 +91,7 @@ const Transaction = {
 }
 
 // 3.5 Chamando o método addTransaction() para que funcione
-DOM.addTransaction(transactions[1]);
+DOM.addTransaction(transactions[2]);
+// 3.6 Agora que passamos o argumento que queremos recuperar, passamos o paramêtro transaction para a função innerHTMLtransaction(), assim teremos acesso à ela dentro da funçao cf. 3.7
 
 // 2. e colocar la no HTML 
