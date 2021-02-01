@@ -82,9 +82,10 @@ const DOM = {
     // 3.7 Podemos recuperar os dados do vetor transactions e substituir os valores no html
 
     // Lembrete: `` (template literals) nos permete usar variaveis dentro (interpolação) e nesse caso podemos usar um bloco de codigo html sem ter erros, que seria o caso com "" e ''
+    // 6.6 Agora que o amount recebe o numero formatado de formatCurrency mudamos a cahamada de obtençao dos valores
     const html = `
           <td class="description">${transaction.description}</td>
-          <td class="${CSSclass}">${transaction.amount}</td>
+          <td class="${CSSclass}">${amount}</td>
           <td class="date">${transaction.date}</td>
           <td>
             <img src="./assets/minus.svg" alt="Remover transação">
@@ -117,8 +118,9 @@ const Utils = {
       style: "currency",
       currency: "BRL"
     });
+    // 6.5 cf innerHTMLTransaction 6.6
 
-    console.log(signal + value);
+    return signal + value;
   },
 };
 
