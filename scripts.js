@@ -45,6 +45,13 @@ const Transaction = {
   // 10. Criando um atalho pra poder acessar as transactions dentro deste objeto 
   all: transactions,
 
+  // 10.2 Adicionar uma nova transação com o método add()
+  add(transaction) {
+    Transaction.all.push(transaction);
+    console.log(Transaction.all);
+    // 10.3 Chamar o método add() abaixo
+  },
+
   // Quais funcionalidades eu quero pra este objeto?
 
   /* 8. Colocamos um return "cheguei" so pra testar se conseguimos recuperar os valores no método updateBalance. */
@@ -176,10 +183,20 @@ const Utils = {
   },
 };
 
+// 10.3 Chamando o método add() para teste
+Transaction.add({
+  id: 39,
+  description: 'Alo',
+  amount: 200,
+  date: '23/01/2021'
+})
+
 // 4. Para mostrar todos os dados do vetor, fazemos um loop e passamos como argumento à chamada da funçao
 transactions.forEach(function (transaction) {
   DOM.addTransaction(transaction);
 });
 
+
 // 7.2 Executando updateBalance()
 DOM.updateBalance();
+
