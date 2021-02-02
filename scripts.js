@@ -48,8 +48,10 @@ const Transaction = {
   // 10.2 Adicionar uma nova transação com o método add()
   add(transaction) {
     Transaction.all.push(transaction);
-    console.log(Transaction.all);
+    // console.log(Transaction.all);
     // 10.3 Chamar o método add() abaixo
+    // 11.2 Executando reload()
+    App.reload();
   },
 
   // Quais funcionalidades eu quero pra este objeto?
@@ -97,11 +99,11 @@ const Transaction = {
 const DOM = {
   // 3.8 Getting tbody tag
   transactionsContainer: document.querySelector("#data-table tbody"),
-  // 3. Essa função vai trabalhar com a função innerHTMLTransaction(). Ela vaipegar as transações e coloca-las no HTML
+  // 3. Essa função vai trabalhar com a função innerHTMLTransaction(). Ela vai pegar as transações e coloca-las no HTML
   addTransaction(transaction, index) {
     // 3.1 Vamos criar a tag tr, assim podemos apagar o tr da variavel htmlabaixo
     const tr = document.createElement("tr");
-    // 3.2 Adicionar a essa tag o conteudo da variavel html, para issoprecisamos    retornar esta constante cf. 3.3
+    // 3.2 Adicionar a essa tag o conteudo da variavel html, para isso precisamos retornar esta constante cf. 3.3
     tr.innerHTML = DOM.innerHTMLTransaction(transaction);
     // 3.4 Agora precisar chamar este método cf. 3.5
 
@@ -183,13 +185,7 @@ const Utils = {
   },
 };
 
-// 10.3 Chamando o método add() para teste
-Transaction.add({
-  id: 39,
-  description: 'Alo',
-  amount: 200,
-  date: '23/01/2021'
-})
+/* Na etapa 11 regroupamos estas duas chamadas no objeto App 
 
 // 4. Para mostrar todos os dados do vetor, fazemos um loop e passamos como argumento à chamada da funçao
 transactions.forEach(function (transaction) {
@@ -199,4 +195,30 @@ transactions.forEach(function (transaction) {
 
 // 7.2 Executando updateBalance()
 DOM.updateBalance();
+*/
 
+// 11. Vamos organisar melhor o codigo, regroupando todas essas chamadas num objeto que vamos chamar de App.
+const App = {
+  init() {
+    Transaction.all.forEach(transaction => {
+      DOM.addTransaction(transaction)
+    });
+
+    DOM.updateBalance();
+  },
+  reload() {
+    App.init();
+  }
+}
+
+// 12. Agora podemos chamar so o método init() de App que vai chamar todos os outros métodos 
+App.init();
+
+// 10.3 Chamando o método add() para teste
+// 11.1 Depois de criar o objeto App chamamos o método reload() no método add() de Transaction cf. 11.2
+Transaction.add({
+  id: 39,
+  description: 'Alo',
+  amount: 200,
+  date: '23/01/2021'
+})
