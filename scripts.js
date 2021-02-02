@@ -181,6 +181,14 @@ const Utils = {
     
   },
 
+  formatDate(date) {
+    // split : separa os dados em elementos de um array à partir do parametro dado
+    const splittedDate = date.split("-");
+
+    // Invertemos o valor recebido para que a data fique no formato que queremos
+    return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`;
+  },
+
   formatCurrency(value) {
     // console.log(value);
     // 6.1 Se o numero for menor que 0, adicionamos um sinal negativo, senao nao colocamos nada
@@ -248,6 +256,9 @@ const Form = {
 
     // 15.4.3 Formatando o valor de amount (esse método nao foi criado ainda, a gente vai cria-lo logo em seguida) cf. Utils 
     amount = Utils.formatAmount(amount);
+
+    // 15.4.7 Formatar a data
+    date = Utils.formatDate(date);
     
   },
 
