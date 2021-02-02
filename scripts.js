@@ -42,6 +42,9 @@ const transactions = [
 
 // Esse sinal de = nao devemos falar igual, mas sim atribuindo para evitar confusoes com o sinal de = matematico que significa igualdade
 const Transaction = {
+  // 10. Criando um atalho pra poder acessar as transactions dentro deste objeto 
+  all: transactions,
+
   // Quais funcionalidades eu quero pra este objeto?
 
   /* 8. Colocamos um return "cheguei" so pra testar se conseguimos recuperar os valores no método updateBalance. */
@@ -51,7 +54,8 @@ const Transaction = {
     let income = 0;
 
     // 8.1 Pegar todas as transações
-    transactions.forEach(transaction => {
+    // 10.1 Depois de criado o atalho pra transactions, mudamos a forma de chama-los no loop de transactions. para Transaction.all.
+    Transaction.all.forEach(transaction => {
       // 8.2 Para cada transação, se ela for maior que 0
       if (transaction.amount > 0) {
         // 8.3 Se for maior que 0, somar a uma variavel e retornar a variavel
@@ -66,7 +70,7 @@ const Transaction = {
   expenses() {
     let expense = 0;
 
-    transactions.forEach(transaction => {
+    Transaction.all.forEach(transaction => {
       if (transaction.amount < 0) {
         expense += transaction.amount;
       }
