@@ -215,8 +215,19 @@ const Form = {
 
   // 15.3 Verificar se todas as informações foram preenchidas 
   validateFields() {
-    // 15.3.4
-   console.log(Form.getValues());
+    // 15.3.4 Registrando os valores numa variavel
+    // const description = Form.getValues().description; podemos fazer dessa maneira três vezes ou desestruturando :
+    const { description, amount, date } = Form.getValues();
+    
+    // 15.3.5 Condiçao que vai verificar se o input esta vazio 
+    if (
+      description.trim() === "" || 
+      amount.trim() === "" || 
+      date.trim() === "") {
+        // trhow : "despejar" um novo objeto de erro
+        throw new Error("Por favor, preencha todos os campos");
+        // 15.3.6 Agora devemos tratar esses erros de uma forma melhor cf. 15.3.7 submit
+    }
   },
 
   submit(event) {
@@ -224,13 +235,21 @@ const Form = {
     // 15.2 Impedindo o evento padrão de envio do formulario com o clique antes de obter os dados
     event.preventDefault();
 
-    // 15.3.1 Chamada para a funçao qua vai verificar os campos
-    Form.validateFields();
-    // 15.4 Formatar os dados para salvar 
-    // 15.5 Salvar
-    // 15.6 Apagar os dados do formulario pra registrar novas informações
-    // 15.7 Fechar o modal para ver as atualizações
-    // 15.8 Atualizar a aplicaçao
+    // 15.3.7 Captura do erro
+    try {
+      // 15.3.1 Chamada para a funçao qua vai verificar os campos
+      Form.validateFields();
+      // 15.4 Formatar os dados para salvar 
+      // 15.5 Salvar
+      // 15.6 Apagar os dados do formulario pra registrar novas informações
+      // 15.7 Fechar o modal para ver as atualizações
+      // 15.8 Atualizar a aplicaçao
+
+    } catch (error) {
+      alert(error.message);
+    }
+
+    
   }
 }
 
