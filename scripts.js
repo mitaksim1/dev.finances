@@ -94,6 +94,24 @@ const DOM = {
     // 3.3 Retornar html para poder recupera-la na funcão addTransaction
     return html;
   },
+
+  // 7. Dinamisando os valores das cards
+  updateBalance() {
+    // 7.1 Buscar os elementos que contém os valores, pra isso temos que definir uma classe para os mesmos. cf. index.html 7.1
+    document
+      .querySelector('.incomeDisplay')
+      .innerHTML = "Soma das entradas"
+    // 7.2 Para poder testar, temos que chamar essa funçao como fizemos pro transactions(). 
+
+    // 7.3 Fazer a mesma coisa para as outras Cards
+    document
+      .querySelector('.expenseDisplay')
+      .innerHTML = "Soma das saidas"
+
+      document
+      .querySelector('.totalDisplay')
+      .innerHTML = "Total"
+  }
 };
 
 // 6.
@@ -128,3 +146,6 @@ const Utils = {
 transactions.forEach(function (transaction) {
   DOM.addTransaction(transaction);
 });
+
+// 7.2 Executando updateBalance()
+DOM.updateBalance();
