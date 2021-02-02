@@ -199,8 +199,38 @@ const Utils = {
 // 15. Criaçao de um objeto que vai trabalhar com o formulario da aplicação
 // 15.1 Chamar o método que vamos criar la no html
 const Form = {
+  // 15.3.2 Pegar os campos do formulario 
+  description : document.querySelector('input#description'),
+  amount : document.querySelector('input#amount'),
+  date : document.querySelector('input#date'),
+
+  // 15.3.3 Pegar os valores dos inputs
+  getValues() {
+    return {
+      description: Form.description.value,
+      amount: Form.amount.value,
+      date: Form.date.value
+    }
+  },
+
+  // 15.3 Verificar se todas as informações foram preenchidas 
+  validateFields() {
+    // 15.3.4
+   console.log(Form.getValues());
+  },
+
   submit(event) {
-    console.log(event);
+   
+    // 15.2 Impedindo o evento padrão de envio do formulario com o clique antes de obter os dados
+    event.preventDefault();
+
+    // 15.3.1 Chamada para a funçao qua vai verificar os campos
+    Form.validateFields();
+    // 15.4 Formatar os dados para salvar 
+    // 15.5 Salvar
+    // 15.6 Apagar os dados do formulario pra registrar novas informações
+    // 15.7 Fechar o modal para ver as atualizações
+    // 15.8 Atualizar a aplicaçao
   }
 }
 
