@@ -15,25 +15,21 @@ const Modal = {
 // Para recuperar os valores da tabela que criamos no html, precisamos estoca-los num vetor, no nosso caso um vetor de objetos [{}]
 const transactions = [
   {
-    id: 1,
     description: "Luz",
     amount: -50001 /* quando lidamos com valores nao colocamos as cifras e virgulas, iremos formata-los depois */,
     date: "23/01/2021",
   },
   {
-    id: 2,
     description: "Website",
     amount: 500000,
     date: "24/01/2021",
   },
   {
-    id: 3,
     description: "Internet",
     amount: -20000,
     date: "23/01/2021",
   },
   {
-    id: 4,
     description: "App",
     amount: 200000,
     date: "23/01/2021",
@@ -52,6 +48,16 @@ const Transaction = {
     // 10.3 Chamar o método add() abaixo
     // 11.2 Executando reload()
     App.reload();
+  },
+
+  // 14. Remover uma transação da tabela
+  remove(index) {
+    // splice() método dos arrays que pega como primeiro parêmetro o indice do elemento e como segundo a quantidade de elementos onde queremos executar o splice.
+    Transaction.all.splice(index, 1);
+
+    // 14.1 Depois de fazer o "pedido" de remoção temos que reload a pagina para que ele afiche a nova pagina sem o item que removemos
+    App.reload();
+    // 14.2 Fazer a chamada a essa funçao embaixo
   },
 
   // Quais funcionalidades eu quero pra este objeto?
@@ -156,7 +162,7 @@ const DOM = {
     // 7.4 cf. Transaction() 
   },
 
-  // 13.
+  // 13. Método que vai limpar a tabela antes da adiçao de uma nova transaçao para que nao apareçam os dados repetidos duas vezes
   clearTransactions() {
     DOM.transactionsContainer.innerHTML = "";
   }
@@ -190,6 +196,14 @@ const Utils = {
   },
 };
 
+// 15. Criaçao de um objeto que vai trabalhar com o formulario da aplicação
+// 15.1 Chamar o método que vamos criar la no html
+const Form = {
+  submit(event) {
+    console.log(event);
+  }
+}
+
 /* Na etapa 11 regroupamos estas duas chamadas no objeto App 
 
 // 4. Para mostrar todos os dados do vetor, fazemos um loop e passamos como argumento à chamada da funçao
@@ -212,7 +226,8 @@ const App = {
     DOM.updateBalance();
   },
   reload() {
-    // Antes de reiniciar a aplicaçao com o novo dado, clearTransactions vai limpar os antigos antes de afichar o novo
+    // 13.1 Antes de reiniciar a aplicaçao com o novo dado, clearTransactions vai limpar os antigos antes de afichar o novo
+    // 14. cf Transaction
     DOM.clearTransactions();
     App.init();
   }
@@ -221,11 +236,3 @@ const App = {
 // 12. Agora podemos chamar so o método init() de App que vai chamar todos os outros métodos 
 App.init();
 
-// 10.3 Chamando o método add() para teste
-// 11.1 Depois de criar o objeto App chamamos o método reload() no método add() de Transaction cf. 11.2
-Transaction.add({
-  id: 39,
-  description: 'Alo',
-  amount: 200,
-  date: '23/01/2021'
-})
