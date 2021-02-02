@@ -123,21 +123,22 @@ const DOM = {
   },
 
   // 7. Dinamisando os valores das cards
+  // 9. Formatando os valores das cards chamando o método formatCurrency que criamos
   updateBalance() {
     // 7.1 Buscar os elementos que contém os valores, pra isso temos que definir uma classe para os mesmos. cf. index.html 7.1
     document
       .querySelector('.incomeDisplay')
-      .innerHTML = Transaction.incomes();
+      .innerHTML = Utils.formatCurrency(Transaction.incomes());
     // 7.2 Para poder testar, temos que chamar essa funçao como fizemos pro transactions(). 
 
     // 7.3 Fazer a mesma coisa para as outras Cards
     document
       .querySelector('.expenseDisplay')
-      .innerHTML = Transaction.expenses();
+      .innerHTML = Utils.formatCurrency(Transaction.expenses());
 
       document
       .querySelector('.totalDisplay')
-      .innerHTML = Transaction.total();
+      .innerHTML = Utils.formatCurrency(Transaction.total());
 
     // 7.4 cf. Transaction() 
   }
