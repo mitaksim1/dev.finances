@@ -170,6 +170,17 @@ const DOM = {
 
 // 6.
 const Utils = {
+  // 15.4.4 Criando o método formatAmount
+  // No caso de as pessoas colocarem um ponto ou virgula entre os numeros
+  formatAmount(value) {
+    // 15.4.5 Os valores recuperados de um formulario vem em formato de string, entao vamos transorma-lo em um numero
+    // 15.4.6 Depois de transforma-lo em um numero multiplicamos por 100
+    value = Number(value) * 100;
+    // console.log(value);
+    return value;
+    
+  },
+
   formatCurrency(value) {
     // console.log(value);
     // 6.1 Se o numero for menor que 0, adicionamos um sinal negativo, senao nao colocamos nada
@@ -230,6 +241,16 @@ const Form = {
     }
   },
 
+  // 15.4 Formatar os dados para salvar 
+  formatValues() {
+    // 15.4.2 Recuperamos os valores
+    let { description, amount, date } = Form.getValues();
+
+    // 15.4.3 Formatando o valor de amount (esse método nao foi criado ainda, a gente vai cria-lo logo em seguida) cf. Utils 
+    amount = Utils.formatAmount(amount);
+    
+  },
+
   submit(event) {
    
     // 15.2 Impedindo o evento padrão de envio do formulario com o clique antes de obter os dados
@@ -238,8 +259,9 @@ const Form = {
     // 15.3.7 Captura do erro
     try {
       // 15.3.1 Chamada para a funçao qua vai verificar os campos
-      Form.validateFields();
-      // 15.4 Formatar os dados para salvar 
+      // Form.validateFields();
+      // 15.4.1 Chamada para a funçao que vai formatar os dados do jeito que queremos
+      Form.formatValues();
       // 15.5 Salvar
       // 15.6 Apagar os dados do formulario pra registrar novas informações
       // 15.7 Fechar o modal para ver as atualizações
