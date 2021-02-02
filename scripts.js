@@ -44,14 +44,21 @@ const transactions = [
 const Transaction = {
   // Quais funcionalidades eu quero pra este objeto?
 
+  /* 8. Colocamos um return "cheguei" so pra testar se conseguimos recuperar os valores no método updateBalance. */
   // 1. Somar as entradas
-  incomes() {},
+  incomes() {
+    return "cheguei"
+  },
 
   // 2. Somar as saidas
-  expenses() {},
+  expenses() {
+    return "cheguei"
+  },
 
-  // Total = entradas - saidas
-  tota() {},
+  // 3. Total = entradas - saidas
+  total() {
+    return "cheguei"
+  },
 };
 
 // 1. Eu preciso pegar as transações do objeto aqui no Javascript. Uma outra forma de escrever esse passo :
@@ -100,17 +107,19 @@ const DOM = {
     // 7.1 Buscar os elementos que contém os valores, pra isso temos que definir uma classe para os mesmos. cf. index.html 7.1
     document
       .querySelector('.incomeDisplay')
-      .innerHTML = "Soma das entradas"
+      .innerHTML = Transaction.incomes();
     // 7.2 Para poder testar, temos que chamar essa funçao como fizemos pro transactions(). 
 
     // 7.3 Fazer a mesma coisa para as outras Cards
     document
       .querySelector('.expenseDisplay')
-      .innerHTML = "Soma das saidas"
+      .innerHTML = Transaction.expenses();
 
       document
       .querySelector('.totalDisplay')
-      .innerHTML = "Total"
+      .innerHTML = Transaction.total();
+
+    // 7.4 cf. Transaction() 
   }
 };
 
