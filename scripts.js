@@ -154,6 +154,11 @@ const DOM = {
       .innerHTML = Utils.formatCurrency(Transaction.total());
 
     // 7.4 cf. Transaction() 
+  },
+
+  // 13.
+  clearTransactions() {
+    DOM.transactionsContainer.innerHTML = "";
   }
 };
 
@@ -207,6 +212,8 @@ const App = {
     DOM.updateBalance();
   },
   reload() {
+    // Antes de reiniciar a aplicaçao com o novo dado, clearTransactions vai limpar os antigos antes de afichar o novo
+    DOM.clearTransactions();
     App.init();
   }
 }
