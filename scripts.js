@@ -47,17 +47,37 @@ const Transaction = {
   /* 8. Colocamos um return "cheguei" so pra testar se conseguimos recuperar os valores no método updateBalance. */
   // 1. Somar as entradas
   incomes() {
-    return "cheguei"
+    // 8.4 Iniciar a variavel a 0
+    let income = 0;
+
+    // 8.1 Pegar todas as transações
+    transactions.forEach(transaction => {
+      // 8.2 Para cada transação, se ela for maior que 0
+      if (transaction.amount > 0) {
+        // 8.3 Se for maior que 0, somar a uma variavel e retornar a variavel
+        income += transaction.amount;
+        // 8.4 Fazer a mesma coisa pra expense 
+      }
+    })
+    return income;
   },
 
   // 2. Somar as saidas
   expenses() {
-    return "cheguei"
+    let expense = 0;
+
+    transactions.forEach(transaction => {
+      if (transaction.amount < 0) {
+        expense += transaction.amount;
+      }
+    })
+    return expense;
   },
 
   // 3. Total = entradas - saidas
+  // 8.5 Como ja calculamos as entradas e saidas, para o total() temos apenas que chamar essas duas funcões e fazer a diferença entre elas
   total() {
-    return "cheguei"
+    return Transaction.incomes() + Transaction.expenses();
   },
 };
 
