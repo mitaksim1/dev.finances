@@ -12,34 +12,27 @@ const Modal = {
   },
 };
 
-// Para recuperar os valores da tabela que criamos no html, precisamos estoca-los num vetor, no nosso caso um vetor de objetos [{}]
-const transactions = [
-  {
-    description: "Luz",
-    amount: -50001 /* quando lidamos com valores nao colocamos as cifras e virgulas, iremos formata-los depois */,
-    date: "23/01/2021",
-  },
-  {
-    description: "Website",
-    amount: 500000,
-    date: "24/01/2021",
-  },
-  {
-    description: "Internet",
-    amount: -20000,
-    date: "23/01/2021",
-  },
-  {
-    description: "App",
-    amount: 200000,
-    date: "23/01/2021",
-  },
-];
+// 20. Objeto que vai salavr os dados no localStorage
+const Storage = {
+  // 20.1 Primeiro preciso pegar as informações
+  get() {
+    // 20.4 Na hora de recuperar as informações salvas, nao esquecer de repassa-las em formato array
+    return JSON.parse(localStorage.getItem("dev.finances:transactions")) || [];
 
-// Esse sinal de = nao devemos falar igual, mas sim atribuindo para evitar confusoes com o sinal de = matematico que significa igualdade
+    // 20.5 Proxima etapa trabalhar o vetor Transaction cf. 21
+  },
+
+  // 20.2 As informações que preciso guardar são as transactions
+  set(transactions) {
+    // 20.3 localStorage salva sempre em string, então temos que converter o vetor em  string
+    localStorage.setItem("dev.finances:transactions", JSON.stringify(transactions));
+  }
+}
+
 const Transaction = {
-  // 10. Criando um atalho pra poder acessar as transactions dentro deste objeto 
-  all: transactions,
+  // 21. Nessa etapa apagamamos o vetor que contém os dados brutos e substituimos pela chamada ao método get() de Storage que vai rcuperar todas as transaçoes la adicionadas.
+  // cf. 22 App
+  all: Storage.get(),
 
   // 10.2 Adicionar uma nova transação com o método add()
   add(transaction) {
@@ -316,23 +309,7 @@ const Form = {
   }
 }
 
-// 20. Objeto que vai salavr os dados no localStorage
-const Storage = {
-  // 20.1 Primeiro preciso pegar as informações
-  get() {
-    console.log(localStorage);
-  },
 
-  // 20.2 As informações que preciso guardar são as transactions
-  set(transactions) {
-    // Teste de como setar uma informação no localStorage
-    // 1 parametro : a chave que demos o nome de dev.finances
-    // 2 parametro : o que queremos guardar nessa chave, as transações
-    localStorage.setItem("dev.finances:trasactions", transactions);
-  }
-}
-Storage.set('Alo');
-Storage.get();
 
 /* Na etapa 11 regroupamos estas duas chamadas no objeto App 
 
@@ -353,7 +330,11 @@ const App = {
     // 19. Voltar para addTransaction()
     Transaction.all.forEach(DOM.addTransaction);
 
+    // Atualiza as três cards 
     DOM.updateBalance();
+
+    // 22. Setar as transaçoes no localStorage 
+    Storage.set(Transaction.all);
   },
   reload() {
     // 13.1 Antes de reiniciar a aplicaçao com o novo dado, clearTransactions vai limpar os antigos antes de afichar o novo
