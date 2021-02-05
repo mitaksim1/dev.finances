@@ -270,7 +270,7 @@ const Form = {
     // Depois dessa etapa, a gente volta pra funçao submit cf. 16
   },
 
-  // 15.6 Apagar os dados do formulario depois de salvo
+  // 15.6.1 Apagar os dados do formulario depois de salvo
   clearFields() {
     // Ja tinhamos recuperado os campos nessas propriedades
     Form.description.value = "";
@@ -296,10 +296,14 @@ const Form = {
       // 15.5 Salvar a transaçao. Como ja a tinhamos criado, fazemos a chamada do método que esta no objeto Transaction
       Transaction.add(transaction);
 
-      // 15.6 Apagar os dados do formulario pra registrar novas informações. Chamada para a funçao clearFields() que vamos criar em seguida
+      // 15.6 Apagar os dados do formulario pra registrar novas informações. Chamada para a funçao clearFields() que vamos criar em seguida cf 15.6.1
       Form.clearFields();
+
       // 15.7 Fechar o modal para ver as atualizações
+      Modal.close();
+
       // 15.8 Atualizar a aplicaçao
+      App.reload();
 
     } catch (error) {
       alert(error.message);
