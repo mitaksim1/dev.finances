@@ -176,8 +176,8 @@ const Utils = {
     // 15.4.6 Depois de transforma-lo em um numero multiplicamos por 100
     value = Number(value) * 100;
     // console.log(value);
-    return value;
-    
+    // Math.round() arrondi le nombre
+    return Math.round(value);
   },
 
   // 15.4.8. Funçao que vai formatar a data
