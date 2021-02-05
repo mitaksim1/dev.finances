@@ -122,6 +122,7 @@ const DOM = {
   },
 
   // 19. Adicionar o indice no parametro para podermos deletar uma transação
+  // 20. Criaçao do objeto Storage para salvar os dados dos inputs
   // 2. Essa função vai me permitir substituir os dados do HTML
   innerHTMLTransaction(transaction, index) {
     // 5. Gerando as cores das transaçoes se é positiva ou negativa
@@ -314,6 +315,24 @@ const Form = {
     }  
   }
 }
+
+// 20. Objeto que vai salavr os dados no localStorage
+const Storage = {
+  // 20.1 Primeiro preciso pegar as informações
+  get() {
+    console.log(localStorage);
+  },
+
+  // 20.2 As informações que preciso guardar são as transactions
+  set(transactions) {
+    // Teste de como setar uma informação no localStorage
+    // 1 parametro : a chave que demos o nome de dev.finances
+    // 2 parametro : o que queremos guardar nessa chave, as transações
+    localStorage.setItem("dev.finances:trasactions", transactions);
+  }
+}
+Storage.set('Alo');
+Storage.get();
 
 /* Na etapa 11 regroupamos estas duas chamadas no objeto App 
 
