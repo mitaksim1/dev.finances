@@ -181,6 +181,7 @@ const Utils = {
     
   },
 
+  // 15.4.8. Funçao que vai formatar a data
   formatDate(date) {
     // split : separa os dados em elementos de um array à partir do parametro dado
     const splittedDate = date.split("-");
@@ -257,9 +258,24 @@ const Form = {
     // 15.4.3 Formatando o valor de amount (esse método nao foi criado ainda, a gente vai cria-lo logo em seguida) cf. Utils 
     amount = Utils.formatAmount(amount);
 
-    // 15.4.7 Formatar a data
+    // 15.4.7 Formatar a data (temos que criar a funçao formatDate cf. Utils)
     date = Utils.formatDate(date);
-    
+
+    // 15.4.9 Depois de formatar a data, retornamos
+    return {
+      description, 
+      amount, 
+      date
+    }
+    // Depois dessa etapa, a gente volta pra funçao submit cf. 16
+  },
+
+  // 15.6 Apagar os dados do formulario depois de salvo
+  clearFields() {
+    // Ja tinhamos recuperado os campos nessas propriedades
+    Form.description.value = "";
+    Form.amount.value = "";
+    Form.date.value = "";
   },
 
   submit(event) {
@@ -271,10 +287,17 @@ const Form = {
     try {
       // 15.3.1 Chamada para a funçao qua vai verificar os campos
       // Form.validateFields();
+
+      
       // 15.4.1 Chamada para a funçao que vai formatar os dados do jeito que queremos
-      Form.formatValues();
-      // 15.5 Salvar
-      // 15.6 Apagar os dados do formulario pra registrar novas informações
+      // 16. Estocamos a chamada para o método formatValues() em uma variavel. Proxima etapa cf. 15.5 logo abaixo
+      const transaction = Form.formatValues();
+
+      // 15.5 Salvar a transaçao. Como ja a tinhamos criado, fazemos a chamada do método que esta no objeto Transaction
+      Transaction.add(transaction);
+
+      // 15.6 Apagar os dados do formulario pra registrar novas informações. Chamada para a funçao clearFields() que vamos criar em seguida
+      Form.clearFields();
       // 15.7 Fechar o modal para ver as atualizações
       // 15.8 Atualizar a aplicaçao
 
