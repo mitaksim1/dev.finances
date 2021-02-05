@@ -302,14 +302,9 @@ const Form = {
       // 15.7 Fechar o modal para ver as atualizações
       Modal.close();
 
-      // 15.8 Atualizar a aplicaçao
-      App.reload();
-
     } catch (error) {
       alert(error.message);
-    }
-
-    
+    }  
   }
 }
 
