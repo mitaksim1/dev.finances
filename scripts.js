@@ -105,20 +105,25 @@ const Transaction = {
 const DOM = {
   // 3.8 Getting tbody tag
   transactionsContainer: document.querySelector("#data-table tbody"),
+
   // 3. Essa função vai trabalhar com a função innerHTMLTransaction(). Ela vai pegar as transações e coloca-las no HTML
   addTransaction(transaction, index) {
     // 3.1 Vamos criar a tag tr, assim podemos apagar o tr da variavel htmlabaixo
     const tr = document.createElement("tr");
     // 3.2 Adicionar a essa tag o conteudo da variavel html, para isso precisamos retornar esta constante cf. 3.3
-    tr.innerHTML = DOM.innerHTMLTransaction(transaction);
+    tr.innerHTML = DOM.innerHTMLTransaction(transaction, index);
     // 3.4 Agora precisar chamar este método cf. 3.5
+
+    // 17. Recuperando o indice da linha de cada transaçao cf. 18 bem abaixo na chamada desta funçao no objeto App
+    tr.dataset.index = index;
 
     // 3.9 Agora que recuperamos a tag tbody, podemos "colar" o que criamosdentro   dela
     DOM.transactionsContainer.appendChild(tr);
   },
 
+  // 19. Adicionar o indice no parametro para podermos deletar uma transação
   // 2. Essa função vai me permitir substituir os dados do HTML
-  innerHTMLTransaction(transaction) {
+  innerHTMLTransaction(transaction, index) {
     // 5. Gerando as cores das transaçoes se é positiva ou negativa
     const CSSclass = transaction.amount > 0 ? "income" : "expense";
 
@@ -134,7 +139,7 @@ const DOM = {
           <td class="${CSSclass}">${amount}</td>
           <td class="date">${transaction.date}</td>
           <td>
-            <img src="./assets/minus.svg" alt="Remover transação">
+            <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover transação">
           </td>
       `;
     // 3.3 Retornar html para poder recupera-la na funcão addTransaction
@@ -302,6 +307,8 @@ const Form = {
       // 15.7 Fechar o modal para ver as atualizações
       Modal.close();
 
+      // Depois dessa etapa, passamos a supressao de uma transaçao cf. DOM::addTransaction() 17
+
     } catch (error) {
       alert(error.message);
     }  
@@ -323,9 +330,9 @@ DOM.updateBalance();
 // 11. Vamos organisar melhor o codigo, regroupando todas essas chamadas num objeto que vamos chamar de App.
 const App = {
   init() {
-    Transaction.all.forEach(transaction => {
-      DOM.addTransaction(transaction)
-    });
+    // 18. Quando fazemos um loop no array temos acesso ao elemento e ao seu indice. Como aqui pedimos em parametros os mesmos elementos (transactions e queremos também recuperar o index) podemos passar a chamada da funçao addTransaction() diretamente como parametro do loop.
+    // 19. Voltar para addTransaction()
+    Transaction.all.forEach(DOM.addTransaction);
 
     DOM.updateBalance();
   },
